@@ -1,7 +1,5 @@
-var bot = new builder.UniversalBot(connector);
-
 var builder = require('botbuilder'),
-var restify = require('restify');
+restify = require('restify');
 
 //restify 
 var server = restify.createServer();
