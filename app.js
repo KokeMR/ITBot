@@ -1,8 +1,23 @@
-var builder = require('botbuilder');
-
-var connector = new builder.ConsoleConnector().listen();
 var bot = new builder.UniversalBot(connector);
+
+var builder = require('botbuilder'),
+var restify = require('restify');
+
+//restify 
+var server = restify.createServer();
+server.listen(process.env.port || process.env.PORT || 3978, function () {
+   console.log('%s listening to %s', server.name, server.url); 
+});
+var connector = new builder.ChatConnector({
+    appId: process.env.MICROSOFT_APP_ID,
+    appPassword: process.env.MICROSOFT_APP_PASSWORD
+});
+var bot = new builder.UniversalBot(connector);
+server.post('/api/messages', connector.listen());
+
+//Intents
 var intents = new builder.IntentDialog();
+
 bot.dialog('/', intents);
 
 intents.matches(/^change name/i, [
