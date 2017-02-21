@@ -1,5 +1,8 @@
 var builder = require('botbuilder'),
-    restify = require('restify');
+    restify = require('restify'),
+    recognizer = new builder.LuisRecognizer('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/19ef6460-9e63-4df8-b272-bc65d4f71e88?subscription-key=71da68e532a94bf8b950185cbde7dd15&verbose=true')
+    intents = new builder.IntentDialog({recognizers:[recognizer]});
+
 
 //restify 
 var server = restify.createServer();
@@ -14,27 +17,29 @@ var bot = new builder.UniversalBot(connector);
 server.post('/api/messages', connector.listen());
 
 //Intents
-var intents = new builder.IntentDialog();
+
+//var intents = new builder.IntentDialog();
 
 bot.dialog('/', intents);
 
-intents.matches(/^change name/i, [
+intents.matches('name_change', [
     function (session) {
-        session.beginDialog('/really');
+        builder.Prompts.text(session, 'Really? What is your name?');
     },
     function (session, results) {
-        session.send('Ok... Changed your name to %s', session.userData.name);
+        session.userData.name = results.response;  
+        session.endDialog('Ok... Changed your name to %s', session.userData.name);
     }
 ]);
 
-intents.matches(/^that is not my name/i, [
-    function (session) {
-        session.beginDialog('/really');
-    },
-    function (session, results) {
-        session.send('Ok... Changed your name to %s', session.userData.name);
-    }
-]);
+// intents.matches(/^that is not my name/i, [
+//     function (session) {
+//         session.beginDialog('/really');
+//     },
+//     function (session, results) {
+//         session.send('Ok... Changed your name to %s', session.userData.name);
+//     }
+// ]);
 
 intents.onDefault([
     function (session, args, next) {
@@ -49,7 +54,7 @@ intents.onDefault([
     }
 ]);
 
-bot.dialog('/profile', [
+intents.matches ('greeting', [
     function (session) {
         builder.Prompts.text(session, 'Hi! What is your name?');
     },
@@ -59,12 +64,12 @@ bot.dialog('/profile', [
     }
 ]);
 
-bot.dialog('/really', [
-    function (session) {
-        builder.Prompts.text(session, 'Really? What is your name?');
-    },
-    function (session, results) {
-        session.userData.name = results.response;
-        session.endDialog();
-    }
-]);
+// bot.dialog('/really', [
+//     function (session) {
+//         builder.Prompts.text(session, 'Really? What is your name?');
+//     },
+//     function (session, results) {
+//         session.userData.name = results.response;
+//         session.endDialog();
+//     }
+// ]);
