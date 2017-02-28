@@ -28,7 +28,7 @@ intents.matches('name_change', [
     },
     function (session, results) {
         session.userData.name = results.response;  
-        session.endDialog('Ok... Changed your name to %s', session.userData.name);
+        session.endDialog('Ok... Hi %s', session.userData.name);
     }
 ]);
 
@@ -44,24 +44,41 @@ intents.matches('name_change', [
 intents.onDefault([
     function (session, args, next) {
         if (!session.userData.name) {
-            session.beginDialog('/profile');
+            session.beginDialog('greeting');
         } else {
             next();
         }
     },
-    function (session, results) {
-        session.send('Hello %s!', session.userData.name);
+    function (session) {
+        session.endDialog('Sorry, I did not understand that', session.userData.name);
     }
 ]);
 
 intents.matches ('greeting', [
-    function (session) {
-        builder.Prompts.text(session, 'Hi! What is your name?');
-    },
-    function (session, results) {
-        session.userData.name = results.response;
-        session.endDialog();
-    }
+    function (session, args, next) {
+            if (!session.userData.name) {
+                session.beginDialog('greeting');
+            } else {
+                next();
+             }
+     },
+        function (session, results) {
+            session.send('Hello %s!', session.userData.name);
+        }
+
+
+
+
+
+
+//    function (session) {
+  //      builder.Prompts.text(session, 'Hi! What is your name?');
+    //},
+  //  function (session, results) {
+    //    session.userData.name = results.response;
+      //  session.send('Hello %s!', session.userData.name);
+        //session.endDialog('Do you need help with anything?')
+   // }
 ]);
 
 // bot.dialog('/really', [
