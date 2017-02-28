@@ -28,7 +28,8 @@ intents.matches('name_change', [
     },
     function (session, results) {
         session.userData.name = results.response;  
-        session.endDialog('Ok... Hi %s', session.userData.name);
+        session.send('Ok... Hi %s', session.userData.name);
+        session.endDialog('What can I help you with?')
     }
 ]);
 
@@ -64,6 +65,7 @@ intents.matches ('greeting', [
      },
         function (session, results) {
             session.send('Hello %s!', session.userData.name);
+            session.endDialog('What can I help you with?')
         }
 
 
