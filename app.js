@@ -1,7 +1,47 @@
 var builder = require('botbuilder'),
     restify = require('restify'),
-    recognizer = new builder.LuisRecognizer('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/19ef6460-9e63-4df8-b272-bc65d4f71e88?subscription-key=71da68e532a94bf8b950185cbde7dd15&verbose=true')
+    recognizer = new builder.LuisRecognizer('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/19ef6460-9e63-4df8-b272-bc65d4f71e88?subscription-key=67936a6d4c134618abde8052836fbec3&verbose=true&q=')
     intents = new builder.IntentDialog({recognizers:[recognizer]});
+    helptype = {
+        "network support": {
+            helper: "Felix Berlanga",
+            mail: "v-felber@microsoft.com"
+        },
+        "bay support": {
+            helper: "José Soto",
+            mail: "v-jossor@microsoft.com"
+        },
+        "hardware purchases": {
+            helper: "María Zapata",
+            mail: "v-mazapa@microsoft.com"
+        },
+        "events": {
+            helper: "Sergio de Coca",
+            mail: "v-sedeco@microsoft.com"
+        },
+        "room incident": {
+            helper: "José Soto",
+            mail: "v-jossor@microsoft.com"
+        },
+         "audiovisual support": {
+            helper: "Sergio de Coca",
+            mail: "v-sedeco@microsoft.com"
+        },
+         "phones and ADSL": {
+            helper: "Victoria Sánchez",
+            mail: "v-victos@microsoft.com"
+        },
+         "Computer hardware and software support": {
+            helper: "Javier Casado",
+            mail: "v-jacasa@microsoft.com"
+        }
+    };
+    support = {
+        "Computer hardware and software support": {
+            helper: "Felix Berlanga",
+            mail: "v-felber@microsoft.com"
+        }
+    };
 
 
 //restify 
@@ -33,15 +73,6 @@ intents.matches('name_change', [
     }
 ]);
 
-// intents.matches(/^that is not my name/i, [
-//     function (session) {
-//         session.beginDialog('/really');
-//     },
-//     function (session, results) {
-//         session.send('Ok... Changed your name to %s', session.userData.name);
-//     }
-// ]);
-
 intents.onDefault([
     function (session, args, next) {
         if (!session.userData.name) {
@@ -58,37 +89,34 @@ intents.onDefault([
 intents.matches ('greeting', [
     function (session, args, next) {
             if (!session.userData.name) {
-                session.beginDialog('greeting');
+                builder.Prompts.text(session, 'Hello, what is your name?');
+                
+                session.userData.name = results.response;
+                session.endDialog('Hello %s, what do you need help with?', session.userData.name)
+            
             } else {
                 next();
-             }
+            }
      },
         function (session, results) {
+            session.userData.name = results.response
             session.send('Hello %s!', session.userData.name);
             session.endDialog('What can I help you with?')
         }
 
-
-
-
-
-
-//    function (session) {
-  //      builder.Prompts.text(session, 'Hi! What is your name?');
-    //},
-  //  function (session, results) {
-    //    session.userData.name = results.response;
-      //  session.send('Hello %s!', session.userData.name);
-        //session.endDialog('Do you need help with anything?')
-   // }
 ]);
 
-// bot.dialog('/really', [
-//     function (session) {
-//         builder.Prompts.text(session, 'Really? What is your name?');
-//     },
-//     function (session, results) {
-//         session.userData.name = results.response;
-//         session.endDialog();
-//     }
-// ]);
+
+intents.matches ('help', [
+    function (session) {
+        builder.Prompts.choice(session, "What area do you need help in?", helptype); 
+    },
+    function (session, results) {
+        if (results.response) {
+            var region = helptype[results.response.entity];
+            session.endDialog("Okay, you need to contact %(helper)s whose mail is %(mail)s", region);
+        } else {
+            session.endDialog("Ok");
+        }
+    }
+]);
