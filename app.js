@@ -3,31 +3,31 @@ var builder = require('botbuilder'),
     recognizer = new builder.LuisRecognizer('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/19ef6460-9e63-4df8-b272-bc65d4f71e88?subscription-key=67936a6d4c134618abde8052836fbec3&verbose=true&q=')
     intents = new builder.IntentDialog({recognizers:[recognizer]});
     helptype = {
-        "network support": {
+        "Network support": {
             helper: "Felix Berlanga",
             mail: "v-felber@microsoft.com"
         },
-        "bay support": {
+        "Bay support": {
             helper: "José Soto",
             mail: "v-jossor@microsoft.com"
         },
-        "hardware purchases": {
+        "Hardware purchases": {
             helper: "María Zapata",
             mail: "v-mazapa@microsoft.com"
         },
-        "events": {
+         "Events": {
             helper: "Sergio de Coca",
             mail: "v-sedeco@microsoft.com"
         },
-        "room incident": {
+        "Room incidents": {
             helper: "José Soto",
             mail: "v-jossor@microsoft.com"
         },
-         "audiovisual support": {
+         "Audiovisual support": {
             helper: "Sergio de Coca",
             mail: "v-sedeco@microsoft.com"
         },
-         "phones and ADSL": {
+         "Phones and ADSL": {
             helper: "Victoria Sánchez",
             mail: "v-victos@microsoft.com"
         },
@@ -109,7 +109,7 @@ intents.matches ('greeting', [
 
 intents.matches ('help', [
     function (session) {
-        builder.Prompts.choice(session, "What area do you need help in?", helptype); 
+        builder.Prompts.choice(session, "What area do you need help in?", helptype, {listStyle: builder.ListStyle["button"]}); 
     },
     function (session, results) {
         if (results.response) {
