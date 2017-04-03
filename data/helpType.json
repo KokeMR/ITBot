@@ -1,0 +1,56 @@
+{
+    "Network support": [
+        {
+            "helper": "Felix Berlanga",
+            "mail": "v-felber@microsoft.com"
+        }
+    ],
+    "Bay support": [
+        {
+            "helper": "José Soto",
+            "mail": "v-jossor@microsoft.com"
+        }
+    ],
+    "Hardware purchases": {
+        "helper": "María Zapata",
+        "mail": "v-mazapa@microsoft.com"
+    },
+    "Events": [
+        {
+            "helper": "Sergio de Coca",
+            "mail": "v-sedeco@microsoft.com"
+        }
+    ],
+    "Room incidents": [
+        {
+            "helper": "José Soto",
+            "mail": "v-jossor@microsoft.com"
+        }
+    ],
+    "Audiovisual support": [
+        {
+            "helper": "Sergio de Coca",
+            "mail": "v-sedeco@microsoft.com"
+        }
+    ],
+    "Phones and ADSL": [
+        {
+            "helper": "Victoria Sánchez",
+            "mail": "v-victos@microsoft.com"
+        }
+    ],
+    "Computer hardware and software support": [
+        {
+            "helper": "Felix Berlanga",
+            "mail": "v-felber@microsoft.com"
+        },
+        {
+            "helper": "Javier Casado",
+            "mail": "v-jacasa@microsoft.com"
+        },
+        {
+            "helper": "Jorge de la Morena",
+            "mail": "giselat@microsoft.com"
+        }
+    ]
+}

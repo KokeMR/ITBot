@@ -1,65 +1,24 @@
 var builder = require('botbuilder'),
     restify = require('restify'),
-    recognizer = new builder.LuisRecognizer('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/19ef6460-9e63-4df8-b272-bc65d4f71e88?subscription-key=67936a6d4c134618abde8052836fbec3&verbose=true&q=')
-    intents = new builder.IntentDialog({recognizers:[recognizer]});
-    helptype = {
-        "Network support": {
-            helper: "Felix Berlanga",
-            mail: "v-felber@microsoft.com"
-        },
-        "Bay support": {
-            helper: "José Soto",
-            mail: "v-jossor@microsoft.com"
-        },
-        "Hardware purchases": {
-            helper: "María Zapata",
-            mail: "v-mazapa@microsoft.com"
-        },
-         "Events": {
-            helper: "Sergio de Coca",
-            mail: "v-sedeco@microsoft.com"
-        },
-        "Room incidents": {
-            helper: "José Soto",
-            mail: "v-jossor@microsoft.com"
-        },
-         "Audiovisual support": {
-            helper: "Sergio de Coca",
-            mail: "v-sedeco@microsoft.com"
-        },
-         "Phones and ADSL": {
-            helper: "Victoria Sánchez",
-            mail: "v-victos@microsoft.com"
-        },
-         "Computer hardware and software support": {
-            helper: "Javier Casado",
-            mail: "v-jacasa@microsoft.com"
-        }
-    };
-    support = {
-        "Computer hardware and software support": {
-            helper: "Felix Berlanga",
-            mail: "v-felber@microsoft.com"
-        }
-    };
-
+    recognizer = new builder.LuisRecognizer('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/19ef6460-9e63-4df8-b272-bc65d4f71e88?subscription-key=67936a6d4c134618abde8052836fbec3&verbose=true&q='),
+    intents = new builder.IntentDialog({ recognizers: [recognizer] }),
+    helpType = require('./data/helpType');
 
 //restify 
 var server = restify.createServer();
 server.listen(process.env.port || process.env.PORT || 3978, function () {
     console.log('%s listening to %s', server.name, server.url);
 });
+
 var connector = new builder.ChatConnector({
     appId: 'e0b2dae7-0092-4fe1-b722-b7644af13c3f',
     appPassword: 'OaTjdzfJfeOSyMXmskNwOX4'
 });
+
 var bot = new builder.UniversalBot(connector);
 server.post('/api/messages', connector.listen());
 
 //Intents
-
-//var intents = new builder.IntentDialog();
-
 bot.dialog('/', intents);
 
 intents.matches('name_change', [
@@ -67,7 +26,7 @@ intents.matches('name_change', [
         builder.Prompts.text(session, 'Really? What is your name?');
     },
     function (session, results) {
-        session.userData.name = results.response;  
+        session.userData.name = results.response;
         session.send('Ok... Hi %s', session.userData.name);
         session.endDialog('What can I help you with?')
     }
@@ -86,36 +45,45 @@ intents.onDefault([
     }
 ]);
 
-intents.matches ('greeting', [
+intents.matches('greeting', [
     function (session, args, next) {
-            if (!session.userData.name) {
-                builder.Prompts.text(session, 'Hello, what is your name?');
-                
-                session.userData.name = results.response;
-                session.endDialog('Hello %s, what do you need help with?', session.userData.name)
-            
-            } else {
-                next();
-            }
-     },
-        function (session, results) {
-            session.userData.name = results.response
-            session.send('Hello %s!', session.userData.name);
-            session.endDialog('What can I help you with?')
+        if (!session.userData.name) {
+            builder.Prompts.text(session, 'Hello, what is your name?');
+
+            session.userData.name = results.response;
+            session.endDialog('Hello %s, what do you need help with?', session.userData.name)
+
+        } else {
+            next();
         }
+    },
+    function (session, results) {
+        session.userData.name = results.response
+        session.send('Hello %s!', session.userData.name);
+        session.endDialog('What can I help you with?')
+    }
 
 ]);
 
 
-intents.matches ('help', [
+intents.matches('help', [
     function (session) {
-        builder.Prompts.choice(session, "What area do you need help in?", helptype, {listStyle: builder.ListStyle["button"]}); 
+        builder.Prompts.choice(session, "What area do you need help in?", helpType, { listStyle: builder.ListStyle["button"] });
     },
     function (session, results) {
         if (results.response) {
-            var region = helptype[results.response.entity];
-            session.endDialog("Okay, you need to contact %(helper)s whose mail is %(mail)s", region);
-        } else {
+            var region = helpType[results.response.entity];
+            console.log("region", region);
+
+            session.send('Okay, you can contact with:');
+            
+            region.forEach(function (element) {
+                session.send("%(helper)s whose mail is %(mail)s", element);
+            }, this);
+
+            session.endDialog();
+        }
+        else {
             session.endDialog("Ok");
         }
     }
