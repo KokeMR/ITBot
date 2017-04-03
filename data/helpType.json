@@ -11,10 +11,12 @@
             "mail": "v-jossor@microsoft.com"
         }
     ],
-    "Hardware purchases": {
-        "helper": "María Zapata",
-        "mail": "v-mazapa@microsoft.com"
-    },
+    "Hardware purchases": [
+        {
+            "helper": "María Zapata",
+            "mail": "v-mazapa@microsoft.com"
+        }
+    ],
     "Events": [
         {
             "helper": "Sergio de Coca",
