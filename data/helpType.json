@@ -9,51 +9,61 @@
     "Bay support": [
         {
             "helper": "José Soto",
-            "mail": "v-jossor@microsoft.com"
+            "mail": "v-jossor@microsoft.com",
+            "alias": "v-jossor"
+
         }
     ],
     "Hardware purchases": [
         {
             "helper": "María Zapata",
-            "mail": "v-mazapa@microsoft.com"
+            "mail": "v-mazapa@microsoft.com",
+            "alias": "v-mazapa"
         }
     ],
     "Events": [
         {
             "helper": "Sergio de Coca",
-            "mail": "v-sedeco@microsoft.com"
+            "mail": "v-sedeco@microsoft.com",
+            "alias": "v-sedeco"
         }
     ],
     "Room incidents": [
         {
             "helper": "José Soto",
-            "mail": "v-jossor@microsoft.com"
+            "mail": "v-jossor@microsoft.com",
+            "alias": "v-jossor"
         }
     ],
     "Audiovisual support": [
         {
             "helper": "Sergio de Coca",
-            "mail": "v-sedeco@microsoft.com"
+            "mail": "v-sedeco@microsoft.com",
+            "alias": "v-sedeco"
         }
     ],
     "Phones and ADSL": [
         {
             "helper": "Victoria Sánchez",
-            "mail": "v-victos@microsoft.com"
+            "mail": "v-victos@microsoft.com",
+            "alias": "v-victos"
         }
     ],
     "Computer hardware and software support": [
         {
             "helper": "Fernando Pardinas",
-            "mail": "v-fernp@microsoft.com"
+            "mail": "v-fernp@microsoft.com",
+            "alias": "v-fernp"
         },
         {
             "helper": "Javier Casado",
-            "mail": "v-jacasa@microsoft.com"
+            "mail": "v-jacasa@microsoft.com",
+            "alias": "v-jacasa"
         },
         {
             "helper": "Juanma Carrera",
-            "mail": "v-juanmc@microsoft.com"
+            "mail": "v-juanmc@microsoft.com",
+            "alias": "v-juanmc"
         }
     ]
 }
