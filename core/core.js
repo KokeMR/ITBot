@@ -12,7 +12,7 @@ exports.showChoices = (session, results) => {
         attachments.push(
             new builder.HeroCard(session)
                 .title("%(helper)s", element)
-               // .images([builder.CardImage.create(session, util.format("../public/%(alias)s.png"))])
+                //.images([builder.CardImage.create(session, util.format("https://botinf.azurewebsites.net/public/%(alias)s.png"))])
                 .images([builder.CardImage.create(session, util.format("https://botinf.azurewebsites.net/public/support_logo.png"))])
                 .text("%(mail)s", element)
                 .buttons([
