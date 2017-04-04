@@ -2,7 +2,8 @@ var builder = require('botbuilder'),
     restify = require('restify'),
     recognizer = new builder.LuisRecognizer('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/19ef6460-9e63-4df8-b272-bc65d4f71e88?subscription-key=67936a6d4c134618abde8052836fbec3&verbose=true&q='),
     intents = new builder.IntentDialog({ recognizers: [recognizer] }),
-    helpType = require('./data/helpType');
+    helpType = require('./data/helpType'),
+    core = require('./core/core');
 
 //restify 
 var server = restify.createServer();
@@ -16,6 +17,12 @@ var connector = new builder.ChatConnector({
 });
 
 var bot = new builder.UniversalBot(connector);
+
+//static files
+server.get(/\/public\/?.*/, restify.serveStatic({
+    directory: __dirname
+}));
+
 server.post('/api/messages', connector.listen());
 
 //Intents
@@ -76,10 +83,12 @@ intents.matches('help', [
             console.log("region", region);
 
             session.send('Okay, you can contact with:');
-            
-            region.forEach(function (element) {
-                session.send("%(helper)s whose mail is %(mail)s", element);
-            }, this);
+
+            core.showChoices(session, region);
+
+            // region.forEach(function (element) {
+            //     session.send("%(helper)s whose mail is %(mail)s", element);
+            // }, this);
 
             session.endDialog();
         }
