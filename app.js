@@ -1,8 +1,7 @@
 var builder = require('botbuilder'),
     restify = require('restify'),
     recognizer = new builder.LuisRecognizer('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/19ef6460-9e63-4df8-b272-bc65d4f71e88?subscription-key=67936a6d4c134618abde8052836fbec3&verbose=true&q='),
-    intents = new builder.IntentDialog({ recognizers: [recognizer] }),
-    helpType = require('./data/helpType'),
+    intents = new builder.IntentDialog({ recognizers: [recognizer] }),   
     core = require('./core/core');
 
 //restify 
@@ -57,11 +56,8 @@ intents.matches('greeting', [
         if (!session.userData.name) {
             builder.Prompts.text(session, 'Hello, what is your name?');
 
-            session.userData.name = results.response;
-            session.endDialog('Hello %s, what do you need help with?', session.userData.name)
-
-        } else {
-            next();
+        } else {            
+            session.endDialog('Hello %s, what do you need help with?', session.userData.name);
         }
     },
     function (session, results) {
@@ -73,27 +69,4 @@ intents.matches('greeting', [
 ]);
 
 
-intents.matches('help', [
-    function (session) {
-        builder.Prompts.choice(session, "What area do you need help in?", helpType, { listStyle: builder.ListStyle["button"] });
-    },
-    function (session, results) {
-        if (results.response) {
-            var region = helpType[results.response.entity];
-            console.log("region", region);
-
-            session.send('Okay, you can contact with:');
-
-            core.showChoices(session, region);
-
-            // region.forEach(function (element) {
-            //     session.send("%(helper)s whose mail is %(mail)s", element);
-            // }, this);
-
-            session.endDialog();
-        }
-        else {
-            session.endDialog("Ok");
-        }
-    }
-]);
+intents.matches('help', require('./dialogs/help'));
