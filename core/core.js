@@ -17,7 +17,7 @@ exports.showChoices = (session, results) => {
                 .text("%(mail)s", element)
                 .buttons([
                     
-                    builder.CardAction.openUrl(session, util.format('mailto:%s?Subject=BotIT:', element.mail), 'Email'), (session, util.format('http://aka.ms/itweb/filloutaform')),
+                    builder.CardAction.openUrl(session, util.format('mailto:%s?Subject=BotIT:', element.mail), 'Email'),
                     builder.CardAction.openUrl(session, util.format('skype:v-juanmc@microsoft.com?chat', element.mail), 'Skype')
 
                 ])
