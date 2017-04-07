@@ -15,7 +15,8 @@ exports.showChoices = (session, results) => {
                 .images([builder.CardImage.create(session, util.format("https://botinf.azurewebsites.net/public/%s.png", element.alias))])
                 .text("%(mail)s", element)
                 .buttons([
-                    builder.CardAction.openUrl(session, util.format('mailto:%s', element.email), 'Email'),
+                    
+                    builder.CardAction.openUrl(session, 'mailto:v-jorde@microsoft.com', 'Email'),
                     builder.CardAction.openUrl(session, util.format('skype:%s', element.alias), 'Skype')
 
                 ])
