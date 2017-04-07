@@ -17,8 +17,8 @@ exports.showChoices = (session, results) => {
                 .text("%(mail)s", element)
                 .buttons([
                     
-                    builder.CardAction.openUrl(session, util.format('mailto:%s?Subject=BOTIT:', element.mail) , 'Email'),
-                    builder.CardAction.openUrl(session, util.format('skype:%s', element.mail), 'Skype')
+                    builder.CardAction.openUrl(session, util.format('mailto:%s?Subject=BotIT:', element.mail) , 'Email'),
+                    builder.CardAction.openUrl(session, util.format('skype:%s?chat', element.mail), 'Skype')
 
                 ])
         );
