@@ -18,7 +18,7 @@ exports.showChoices = (session, results) => {
                 .buttons([
                     
                     builder.CardAction.openUrl(session, util.format('mailto:%s', element.mail) , 'Email'),
-                    builder.CardAction.openUrl(session, util.format('skype:%s', element.alias), 'Skype')
+                    builder.CardAction.openUrl(session, util.format('skype:%s', element.mail), 'Skype')
 
                 ])
         );
