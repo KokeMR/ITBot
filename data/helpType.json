@@ -6,14 +6,6 @@
             "alias": "v-felber"
         }
     ],
-    "Bay support": [
-        {
-            "helper": "José Soto",
-            "mail": "v-jossor@microsoft.com",
-            "alias": "v-jossor"
-
-        }
-    ],
     "Hardware purchases": [
         {
             "helper": "María Zapata",
@@ -28,14 +20,12 @@
             "alias": "v-sedeco"
         }
     ],
-    "Room incidents": [
+    "Room incidents and audiovisual support": [
         {
             "helper": "José Soto",
             "mail": "v-jossor@microsoft.com",
             "alias": "v-jossor"
-        }
-    ],
-    "Audiovisual support": [
+        },
         {
             "helper": "Sergio de Coca",
             "mail": "v-sedeco@microsoft.com",
