@@ -9,13 +9,12 @@ module.exports = [
             builder.Prompts.text(session, 'Hello, what is your name?');
 
         } else {            
-            session.endDialog('Hello %s, what do you need help with?', session.userData.name);
+            session.endDialog('Hello %s! What do you need?', session.userData.name);
         }
     },
     function (session, results) {
         session.userData.name = results.response
-        session.send('Hello %s!', session.userData.name);
-        session.endDialog('What can I help you with?')
+        session.endDialog('Hello %s! What do you need?', session.userData.name);
     }
 
 ];
