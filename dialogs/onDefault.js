@@ -6,7 +6,7 @@ const
 module.exports = [
     function (session, args, next) {
         if (!session.userData.name) {
-            session.beginDialog('greeting');
+            session.beginDialog('greeting', require('../dialogs/greeting'));
         } else {
             next();
         }
