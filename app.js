@@ -1,6 +1,6 @@
 var builder = require('botbuilder'),
     restify = require('restify'),
-    recognizer = new builder.LuisRecognizer(process.env.LUIS_URL),
+    recognizer = new builder.LuisRecognizer("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/0969a044-ea94-4a24-82a5-6323fab6782e?subscription-key=67936a6d4c134618abde8052836fbec3&timezoneOffset=1.0&verbose=true&q="),
     //recognizerES = new builder.LuisRecognizer(process.env.LUIS_ES_URL'),
     //intents = new builder.IntentDialog({ recognizers: [recognizer, recognizerES] 
     intents = new builder.IntentDialog({ recognizers: [recognizer] }),   
