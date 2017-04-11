@@ -14,8 +14,8 @@ server.listen(process.env.port || process.env.PORT || 3978, function () {
 
 //Chat connector
 var connector = new builder.ChatConnector({
-    appId: process.env.Microsoft_AppId,
-    appPassword: process.env.Microsoft_AppPassword
+    appId: /*process.env.Microsoft_AppId*/'e0b2dae7-0092-4fe1-b722-b7644af13c3f',
+    appPassword: /*process.env.Microsoft_AppPassword*/'OaTjdzfJfeOSyMXmskNwOX4'
     
 });
 var bot = new builder.UniversalBot(connector);
