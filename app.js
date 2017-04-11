@@ -1,9 +1,9 @@
 var builder = require('botbuilder'),
     restify = require('restify'),
     recognizer = new builder.LuisRecognizer(process.env.LUIS_URL),//'https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/19ef6460-9e63-4df8-b272-bc65d4f71e88?subscription-key=b1012219ddd4429e9185dc920fd83107&timezoneOffset=0.0&verbose=true&q='),
-    //recognizerES = new builder.LuisRecognizer(process.env.LUIS_ES_URL' = https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/0969a044-ea94-4a24-82a5-6323fab6782e?subscription-key=67936a6d4c134618abde8052836fbec3&timezoneOffset=1.0&verbose=true&q=),
-    //intents = new builder.IntentDialog({ recognizers: [recognizer, recognizerES] 
-    intents = new builder.IntentDialog({ recognizers: [recognizer] }),   
+    recognizerES = new builder.LuisRecognizer(process.env.LUIS_ES_URL)// = https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/27500b0b-e95a-4382-9044-f031474fab7b?subscription-key=b1012219ddd4429e9185dc920fd83107&verbose=true&timezoneOffset=0.0&q=),
+    intents = new builder.IntentDialog({ recognizers: [recognizer, recognizerES] 
+    //intents = new builder.IntentDialog({ recognizers: [recognizer] }),   
     core = require('./core/core');
 
 //restify 
