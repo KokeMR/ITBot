@@ -2,7 +2,7 @@ var builder = require('botbuilder'),
     restify = require('restify'),
     recognizer = new builder.LuisRecognizer(process.env.LUIS_URL),
     recognizerES = new builder.LuisRecognizer(process.env.LUIS_ES_URL)
-    intents = new builder.IntentDialog({ recognizers: [recognizer, recognizerES]   
+    intents = new builder.IntentDialog({ recognizers: [recognizer, recognizerES]}),
     core = require('./core/core');
 
 //restify 
