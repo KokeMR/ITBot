@@ -32,8 +32,7 @@ intents.matches('name_change', require('./dialogs/name_change'));
 intents.onDefault(require('./dialogs/onDefault'));
 intents.matches('greeting', require('./dialogs/greeting'));
 intents.matches('help', require('./dialogs/help'));
-
-bot.dialog('/localePicker', [
+intents.matches('language_change', [
     function (session) {
          builder.Prompts.choice(session, "What's your preferred language?", 'English|Español|Italiano');
     },
