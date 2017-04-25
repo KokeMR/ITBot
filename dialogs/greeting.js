@@ -6,15 +6,15 @@ const
 module.exports = [
     function (session, args, next) {
         if (!session.userData.name) {
-            builder.Prompts.text(session, 'Hello, what is your name?');
+            builder.Prompts.text(session, "greeting");
 
         } else {            
-            session.endDialog('Hello %s! What do you need?', session.userData.name);
+            session.endDialog("known_person", session.userData.name);
         }
     },
     function (session, results) {
         session.userData.name = results.response
-        session.endDialog('Hello %s! What do you need?', session.userData.name);
+        session.endDialog("known_person", session.userData.name);
     }
 
 ];
