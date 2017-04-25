@@ -32,3 +32,30 @@ intents.matches('name_change', require('./dialogs/name_change'));
 intents.onDefault(require('./dialogs/onDefault'));
 intents.matches('greeting', require('./dialogs/greeting'));
 intents.matches('help', require('./dialogs/help'));
+
+bot.dialog('/localePicker', [
+    function (session) {
+         builder.Prompts.choice(session, "What's your preferred language?", 'English|Español|Italiano');
+    },
+    function (session, results) {
+        var locale;
+        switch (results.response.entity) {
+            case 'English':
+                locale = 'en';
+            case 'Español':
+                locale = 'es';
+            case 'Italiano':
+                locale = 'it';
+                break;
+        }
+        session.preferredLocale(locale, function (err) {
+            if (!err) {
+                // Locale files loaded
+                session.endDialog("Your preferred language is now %s.", results.response.entity);
+            } else {
+                // Problem loading the selected locale
+                session.error(err);
+            }
+        });
+    }
+]);
