@@ -37,4 +37,4 @@ intents.matches('name_change', require('./dialogs/name_change'));
 intents.onDefault(require('./dialogs/onDefault'));
 intents.matches('greeting', require('./dialogs/greeting'));
 intents.matches('help', require('./dialogs/help'));
-intents.matches('language_change', require('.dialogs/language_change'));
+intents.matches('language_change', require('./dialogs/language_change'));
