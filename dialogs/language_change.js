@@ -12,6 +12,7 @@ module.exports = [
         switch (results.response.entity) {
             case 'English':
                 locale = 'en';
+                break;
             case 'Español':
                 locale = 'es';
                 break;

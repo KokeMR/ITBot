@@ -2,7 +2,7 @@
    "greeting": "Hola, ¿cómo te llamas?",
     "known_person": "¡Hola %s! ¿Qué necesitas?",
     "locale_prompt": "Cuál es tu idioma preferido?",
-    "locale_updated": "Tu idioma preferido es español.",
+    "locale_updated": "Tu idioma preferido es ahora español.",
    "helptype_prompt": "¿Con qué necesitas ayuda?",
     "contact": "Vale, puedes ponerte en contacto con:",
     "ok": "¡Vale!",
