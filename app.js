@@ -26,6 +26,11 @@ server.get(/\/public\/?.*/, restify.serveStatic({
 
 server.post('/api/messages', connector.listen());
 
+bot.set('localizerSettings', {
+    botLocalePath: "./customLocale", 
+    defaultLocale: "en" 
+});
+
 //Intents
 bot.dialog('/', intents);
 intents.matches('name_change', require('./dialogs/name_change'));
