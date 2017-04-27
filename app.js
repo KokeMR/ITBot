@@ -39,7 +39,7 @@ intents.matches('greeting', require('./dialogs/greeting'));
 intents.matches('help', require('./dialogs/help'));
 intents.matches('language_change', [
     function (session) {
-         builder.Prompts.choice(session, "What's your preferred language?", 'English|Español|Italiano');
+         builder.Prompts.choice(session, "locale_prompt", 'English|Español|Italiano', { listStyle: builder.ListStyle["button"] });
     },
     function (session, results) {
         var locale;
@@ -48,14 +48,12 @@ intents.matches('language_change', [
                 locale = 'en';
             case 'Español':
                 locale = 'es';
-            case 'Italiano':
-                locale = 'it';
                 break;
         }
         session.preferredLocale(locale, function (err) {
             if (!err) {
                 // Locale files loaded
-                session.endDialog("Your preferred language is now %s.", results.response.entity);
+                session.endDialog("locale_updated", results.response.entity);
             } else {
                 // Problem loading the selected locale
                 session.error(err);
