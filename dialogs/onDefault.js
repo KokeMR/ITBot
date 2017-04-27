@@ -12,6 +12,6 @@ module.exports = [
         }
     },
     function (session) {
-        session.endDialog('Sorry, I did not understand that', session.userData.name);
+        session.endDialog("default");
     }
 ];

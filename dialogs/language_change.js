@@ -5,7 +5,7 @@ const
 
 module.exports = [
     function (session) {
-         builder.Prompts.choice(session, "locale_prompt", 'English|Español|Italiano', { listStyle: builder.ListStyle["button"] });
+         builder.Prompts.choice(session, "locale_prompt", 'English|Español', { listStyle: builder.ListStyle["button"] });
     },
     function (session, results) {
         var locale;

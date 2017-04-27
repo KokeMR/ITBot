@@ -5,11 +5,10 @@ const
 
 module.exports = [
     function (session) {
-        builder.Prompts.text(session, 'Really? What is your name?');
+        builder.Prompts.text(session, "name_prompt");
     },
     function (session, results) {
         session.userData.name = results.response;
-        session.send('Ok... Hi %s', session.userData.name);
-        session.endDialog('What can I help you with?')
+        session.endDialog("confirm_name", session.userData.name);
     }
 ];

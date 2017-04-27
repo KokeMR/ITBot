@@ -5,14 +5,14 @@ const
 
 module.exports = [
     function (session) {
-        builder.Prompts.choice(session, "What area do you need help in?", helpType, { listStyle: builder.ListStyle["button"] });
+        builder.Prompts.choice(session, "helptype_prompt", helpType, { listStyle: builder.ListStyle["button"] });
     },
     function (session, results) {
         if (results.response) {
             var region = helpType[results.response.entity];
             console.log("region", region);
 
-            session.send('Okay, you can contact with:');
+            session.send("contact");
 
             core.showChoices(session, region);
 
@@ -23,7 +23,7 @@ module.exports = [
             session.endDialog();
         }
         else {
-            session.endDialog("Ok");
+            session.endDialog("ok");
         }
     }
 ];
