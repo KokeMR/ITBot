@@ -1,6 +1,6 @@
 {
-    "greeting": ["Bienvenido al bot de ejemplo para localización.", "Hola! Yo soy el bot de ejemplo para localización.", "Saludos! Yo soy el bot de ejemplo para localización."],
-    "instructions": "Esta demo te pedirá seleccionar cuál es tu idioma preferido y después te pedirá seleccionar entre varias opciones usando el idioma seleccionado. ",
+   "greeting": "Hola, ¿cómo te llamas?",
+    "known_person": "Hola %s! ¿Qué necesitas?",
     "locale_prompt": "Cuál es tu idioma preferido?",
     "locale_updated": "Tu idioma preferido es español.",
     "text_prompt": "Prompts.text(): Coloca algún texto y éste se te regresará.",

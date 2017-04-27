@@ -1,5 +1,5 @@
 {
-    "greeting": "hello, what is your name?",
+    "greeting": "Hello, what is your name?",
     "known_person": "Hello %s! What do you need?",
     "locale_prompt": "What's your preferred language?",
     "locale_updated": "Your preferred language is now english.",
