@@ -1,8 +1,8 @@
 const
     builder = require('botbuilder'),
     core = require('../core/core'),
-    helpType = require("helpTypeArray");
-
+    helpType = require('../data/helptype');
+    
 module.exports = [
     function (session) {
          builder.Prompts.choice(session, "locale_prompt", 'English|Español', { listStyle: builder.ListStyle["button"] });
