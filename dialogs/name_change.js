@@ -1,7 +1,7 @@
 const
     builder = require('botbuilder'),
     core = require('../core/core'),
-    helpType = require('../data/helpType');
+    helpType = require("helpTypeArray");
 
 module.exports = [
     function (session) {

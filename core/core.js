@@ -1,7 +1,7 @@
 const
     builder = require('botbuilder'),
     util = require('util');
-    helpType = require('../data/helpType');
+    helpType = require("helpTypeArray");
 
 var exports = module.exports = {};
 
