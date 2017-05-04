@@ -10,5 +10,5 @@
     "confirm_name": "Vale... ¡Hola %s! ¿Con qué puedo ayudarte?",
     "default": "Perdona, no he entendido eso",
     "Network_support": "Soporte de redes",
-    "helpTypeArray": "../data/helptype"
+    "helpTypevariable": "helpTypeES"
 }
