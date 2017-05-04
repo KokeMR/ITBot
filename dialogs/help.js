@@ -6,11 +6,11 @@ const
 
 module.exports = [
     function (session) {
-        builder.Prompts.choice(session, "helptype_prompt", "helpTypevariable", { listStyle: builder.ListStyle["button"] });
+        builder.Prompts.choice(session, "helptype_prompt", helpType, { listStyle: builder.ListStyle["button"] });
     },
     function (session, results) {
         if (results.response) {
-            var region = "helptypevariable"[results.response.entity];
+            var region = helpType[results.response.entity];
             console.log("region", region);
 
             session.send("contact");
