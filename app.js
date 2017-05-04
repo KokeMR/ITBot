@@ -29,7 +29,7 @@ server.post('/api/messages', connector.listen());
 
 bot.set('localizerSettings', {
     botLocalePath: "./customLocale", 
-    defaultLocale: "en" 
+    defaultLocale: "es" 
 });
 
 //Intents
