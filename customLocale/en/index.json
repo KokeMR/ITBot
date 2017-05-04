@@ -9,6 +9,5 @@
     "name_prompt": "Really? What is your name?",
     "confirm_name": "Ok... Hi %s. What can I help you with?",
     "default": "Sorry, I did not understand that",
-    "Network_support": "Network support",
-    "helpType_array": "require('../data/helpType')"
+    "Network_support": "Network support"
 }

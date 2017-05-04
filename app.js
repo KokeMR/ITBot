@@ -36,5 +36,9 @@ bot.dialog('/', intents);
 intents.matches('name_change', require('./dialogs/name_change'));
 intents.onDefault(require('./dialogs/onDefault'));
 intents.matches('greeting', require('./dialogs/greeting'));
-intents.matches('help', require('./dialogs/help'));
+if (locale = 'en') {
+    intents.matches('help',require('./dialogs/help'));
+}else{
+    intents.matches('help',require('./dialogs/helpES'));
+}
 intents.matches('language_change', require('./dialogs/language_change'));

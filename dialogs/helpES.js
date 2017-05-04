@@ -1,16 +1,15 @@
 const
     builder = require('botbuilder'),
     core = require('../core/core'),
-    helpType = require('../data/helptype'),
-    helpTypeES = require('../data/helptypeES')
+    helpTypeES = require('../data/helptypeES');
 
 module.exports = [
     function (session) {
-        builder.Prompts.choice(session, "helptype_prompt", helpType, { listStyle: builder.ListStyle["button"] });
+        builder.Prompts.choice(session, "helptype_prompt", helpTypeES, { listStyle: builder.ListStyle["button"] });
     },
     function (session, results) {
         if (results.response) {
-            var region = helpType[results.response.entity];
+            var region = helpTypeES[results.response.entity];
             console.log("region", region);
 
             session.send("contact");

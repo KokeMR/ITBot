@@ -9,6 +9,5 @@
     "name_prompt": "¿En serio? ¿Cuál es tu nombre entonces?",
     "confirm_name": "Vale... ¡Hola %s! ¿Con qué puedo ayudarte?",
     "default": "Perdona, no he entendido eso",
-    "Network_support": "Soporte de redes",
-    "helpType_array": "require('../data/helpTypeES')"
+    "Network_support": "Soporte de redes"
 }
