@@ -1,0 +1,59 @@
+{
+    "Soporte de redes": [
+        {
+            "helper": "Felix Berlanga",
+            "mail": "v-felber@microsoft.com",
+            "alias": "v-felber"
+        }
+    ],
+    "Compras de hardware": [
+        {
+            "helper": "María Zapata",
+            "mail": "v-mazapa@microsoft.com",
+            "alias": "v-mazapa"
+        }
+    ],
+    "Eventos": [
+        {
+            "helper": "Sergio de Coca",
+            "mail": "v-sedeco@microsoft.com",
+            "alias": "v-sedeco"
+        }
+    ],
+    "Incidencias de sala y soporte audiovisual": [
+        {
+            "helper": "José Soto",
+            "mail": "v-jossor@microsoft.com",
+            "alias": "v-jossor"
+        },
+        {
+            "helper": "Sergio de Coca",
+            "mail": "v-sedeco@microsoft.com",
+            "alias": "v-sedeco"
+        }
+    ],
+    "Teléfonos y ADSL": [
+        {
+            "helper": "Victoria Sánchez",
+            "mail": "v-victos@microsoft.com",
+            "alias": "v-victos"
+        }
+    ],
+    "Soporte técnico": [
+        {
+            "helper": "Fernando Pardinas",
+            "mail": "v-fernp@microsoft.com",
+            "alias": "v-fernp"
+        },
+        {
+            "helper": "Javier Casado",
+            "mail": "v-jacasa@microsoft.com",
+            "alias": "v-jacasa"
+        },
+        {
+            "helper": "Juanma Carrera",
+            "mail": "v-juanmc@microsoft.com",
+            "alias": "v-juanmc"
+        }
+    ]
+}
