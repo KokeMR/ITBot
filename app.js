@@ -3,7 +3,8 @@ var builder = require('botbuilder'),
     recognizer = new builder.LuisRecognizer(process.env.LUIS_URL),
     recognizerES = new builder.LuisRecognizer(process.env.LUIS_ES_URL)
     intents = new builder.IntentDialog({ recognizers: [recognizer, recognizerES]}),
-    core = require('./core/core');
+    core = require('./core/core'),
+    locale = require('./dialogs/language_change')
 
 //restify 
 var server = restify.createServer();
