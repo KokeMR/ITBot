@@ -1,10 +1,11 @@
 var builder = require('botbuilder'),
     restify = require('restify'),
     recognizer = new builder.LuisRecognizer(process.env.LUIS_URL),
-    recognizerES = new builder.LuisRecognizer(process.env.LUIS_ES_URL)
-    intents = new builder.IntentDialog({ recognizers: [recognizer, recognizerES]}),
+    recognizerES = new builder.LuisRecognizer(process.env.LUIS_ES_URL),
+    intents = new builder.IntentDialog({ recognizers: [recognizer, recognizerES] }),
     core = require('./core/core'),
-    locale = require('./dialogs/language_change')
+    locale = require('./dialogs/language_change'),
+    db = require('./db/cosmosdb');
 
 //restify 
 var server = restify.createServer();
@@ -16,7 +17,7 @@ server.listen(process.env.port || process.env.PORT || 3978, function () {
 var connector = new builder.ChatConnector({
     appId: process.env.Microsoft_AppId,
     appPassword: process.env.Microsoft_AppPassword
-    
+
 });
 var bot = new builder.UniversalBot(connector);
 
@@ -28,9 +29,14 @@ server.get(/\/public\/?.*/, restify.serveStatic({
 server.post('/api/messages', connector.listen());
 
 bot.set('localizerSettings', {
-    botLocalePath: "./customLocale", 
-    defaultLocale: "es" 
+    botLocalePath: "./customLocale",
+    defaultLocale: "es"
 });
+
+//db.init();
+//db.getTypes(function(results){
+    //leer patrón promise: https://www.returngis.net/2012/11/el-patron-promise-y-callback/
+//});
 
 //Intents
 bot.dialog('/', intents);
@@ -38,8 +44,8 @@ intents.matches('name_change', require('./dialogs/name_change'));
 intents.onDefault(require('./dialogs/onDefault'));
 intents.matches('greeting', require('./dialogs/greeting'));
 if (locale = 'en') {
-    intents.matches('help',require('./dialogs/help'));
-}else{
-    intents.matches('help',require('./dialogs/helpES'));
+    intents.matches('help', require('./dialogs/help'));
+} else {
+    intents.matches('help', require('./dialogs/helpES'));
 }
 intents.matches('language_change', require('./dialogs/language_change'));
