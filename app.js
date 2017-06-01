@@ -4,8 +4,8 @@ var builder = require('botbuilder'),
     recognizerES = new builder.LuisRecognizer(process.env.LUIS_ES_URL),
     intents = new builder.IntentDialog({ recognizers: [recognizer, recognizerES] }),
     core = require('./core/core'),
-    locale = require('./dialogs/language_change');
-    //db = require('./db/cosmosdb');
+    locale = require('./dialogs/language_change'),
+    db = require('./db/cosmosdb');
 
 //restify 
 var server = restify.createServer();

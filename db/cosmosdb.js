@@ -1,4 +1,4 @@
-/*var mongodb = require('mongodb').MongoClient,
+var mongodb = require('mongodb').MongoClient,
     cosmosDbURL = 'mongodb://botitdb:zpcH20B1TpGm31T2nlktpnZPz6D0CInmkebNgWvPCdu8WlowQLupOBJeQmZk6xMLCxlwrWex2wHqZDxtt0fTcg==@botitdb.documents.azure.com:10255/?ssl=true&replicaSet=globaldb',
     exports = module.exports = {};
 
@@ -46,4 +46,4 @@ exports.getTypes = function (done) {
             });
         }
     });
-}*/
+}
