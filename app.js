@@ -49,5 +49,3 @@ if (locale = 'en') {
     intents.matches('help', require('./dialogs/helpES'));
 }
 intents.matches('language_change', require('./dialogs/language_change'));
-
-//prueba
