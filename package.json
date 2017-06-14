@@ -13,8 +13,8 @@
   "author": "Jorge de la Morena",
   "license": "ISC",
   "dependencies": {
-    "botbuilder": "^3.5.4",
-    "mongodb": "^2.2.27",
+    "botbuilder": "^3.8.4",
+    "mongodb": "^2.2.28",
     "restify": "^4.3.0"
   }
 }
